@@ -36,6 +36,7 @@ install_headers(
 
 
 pkgconfig.generate(
+  seamlessclone_lib,
   filebase: 'gegl-sc-' + api_version,
   name: 'GEGL Seamless Cloning',
   description: 'Seamless Cloning Library Based on GEGL',
@@ -46,7 +47,7 @@ pkgconfig.generate(
     gio,
     json_glib,
 
-    babl,
+    babl.type_name() == 'internal' ? [] : babl,
     poly2tri_c.type_name() == 'internal' ? [] : poly2tri_c,
     'gegl-' + api_version,
   ],
